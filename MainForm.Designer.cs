@@ -25,8 +25,16 @@ partial class MainForm {
     /// </summary>
     private void InitializeComponent() {
         var resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-        this.tabControl1 = new TabControl();
+        this.TC_Main = new TabControl();
         this.TP_Config = new TabPage();
+        this.B_Reload = new Button();
+        this.B_SaveChanges = new Button();
+        this.L_Script = new Label();
+        this.L_Version = new Label();
+        this.L_Author = new Label();
+        this.L_Name = new Label();
+        this.TB_Script = new TextBox();
+        this.CB_ValidPath = new CheckBox();
         this.TB_PluginRoot = new TextBox();
         this.TB_Description = new TextBox();
         this.TB_Version = new TextBox();
@@ -38,7 +46,7 @@ partial class MainForm {
         this.button2 = new Button();
         this.button1 = new Button();
         this.checkedListBox1 = new CheckedListBox();
-        this.MSControls = new MenuStrip();
+        this.MS_Controls = new MenuStrip();
         this.TSMI_Addon = new ToolStripMenuItem();
         this.TSMI_New = new ToolStripMenuItem();
         this.TSMI_NewAddon = new ToolStripMenuItem();
@@ -67,28 +75,34 @@ partial class MainForm {
         this.TSMI_Links = new ToolStripMenuItem();
         this.TSMI_GAL = new ToolStripMenuItem();
         this.TSMI_Exit = new ToolStripMenuItem();
-        this.CB_ValidPath = new CheckBox();
-        this.tabControl1.SuspendLayout();
+        this.TC_Main.SuspendLayout();
         this.TP_Config.SuspendLayout();
         this.TP_Singletons.SuspendLayout();
-        this.MSControls.SuspendLayout();
+        this.MS_Controls.SuspendLayout();
         this.SuspendLayout();
         // 
-        // tabControl1
+        // TC_Main
         // 
-        this.tabControl1.Controls.Add(this.TP_Config);
-        this.tabControl1.Controls.Add(this.TP_Types);
-        this.tabControl1.Controls.Add(this.TP_Scenes);
-        this.tabControl1.Controls.Add(this.TP_Singletons);
-        this.tabControl1.Dock = DockStyle.Fill;
-        this.tabControl1.Location = new Point(0, 24);
-        this.tabControl1.Name = "tabControl1";
-        this.tabControl1.SelectedIndex = 0;
-        this.tabControl1.Size = new Size(384, 437);
-        this.tabControl1.TabIndex = 0;
+        this.TC_Main.Controls.Add(this.TP_Config);
+        this.TC_Main.Controls.Add(this.TP_Types);
+        this.TC_Main.Controls.Add(this.TP_Scenes);
+        this.TC_Main.Controls.Add(this.TP_Singletons);
+        this.TC_Main.Dock = DockStyle.Fill;
+        this.TC_Main.Location = new Point(0, 24);
+        this.TC_Main.Name = "TC_Main";
+        this.TC_Main.SelectedIndex = 0;
+        this.TC_Main.Size = new Size(384, 437);
+        this.TC_Main.TabIndex = 0;
         // 
         // TP_Config
         // 
+        this.TP_Config.Controls.Add(this.B_Reload);
+        this.TP_Config.Controls.Add(this.B_SaveChanges);
+        this.TP_Config.Controls.Add(this.L_Script);
+        this.TP_Config.Controls.Add(this.L_Version);
+        this.TP_Config.Controls.Add(this.L_Author);
+        this.TP_Config.Controls.Add(this.L_Name);
+        this.TP_Config.Controls.Add(this.TB_Script);
         this.TP_Config.Controls.Add(this.CB_ValidPath);
         this.TP_Config.Controls.Add(this.TB_PluginRoot);
         this.TP_Config.Controls.Add(this.TB_Description);
@@ -103,6 +117,82 @@ partial class MainForm {
         this.TP_Config.Text = "Configuration";
         this.TP_Config.UseVisualStyleBackColor = true;
         // 
+        // B_Reload
+        // 
+        this.B_Reload.Enabled = false;
+        this.B_Reload.Location = new Point(6, 210);
+        this.B_Reload.Name = "B_Reload";
+        this.B_Reload.Size = new Size(249, 23);
+        this.B_Reload.TabIndex = 14;
+        this.B_Reload.Text = "reload";
+        this.B_Reload.UseVisualStyleBackColor = true;
+        this.B_Reload.Click += this.B_Reload_Click;
+        // 
+        // B_SaveChanges
+        // 
+        this.B_SaveChanges.Enabled = false;
+        this.B_SaveChanges.Location = new Point(261, 210);
+        this.B_SaveChanges.Name = "B_SaveChanges";
+        this.B_SaveChanges.Size = new Size(109, 23);
+        this.B_SaveChanges.TabIndex = 13;
+        this.B_SaveChanges.Text = "save changes";
+        this.B_SaveChanges.UseVisualStyleBackColor = true;
+        // 
+        // L_Script
+        // 
+        this.L_Script.AutoSize = true;
+        this.L_Script.Location = new Point(6, 184);
+        this.L_Script.Name = "L_Script";
+        this.L_Script.Size = new Size(36, 15);
+        this.L_Script.TabIndex = 12;
+        this.L_Script.Text = "script";
+        // 
+        // L_Version
+        // 
+        this.L_Version.AutoSize = true;
+        this.L_Version.Location = new Point(6, 155);
+        this.L_Version.Name = "L_Version";
+        this.L_Version.Size = new Size(45, 15);
+        this.L_Version.TabIndex = 11;
+        this.L_Version.Text = "version";
+        // 
+        // L_Author
+        // 
+        this.L_Author.AutoSize = true;
+        this.L_Author.Location = new Point(6, 126);
+        this.L_Author.Name = "L_Author";
+        this.L_Author.Size = new Size(42, 15);
+        this.L_Author.TabIndex = 10;
+        this.L_Author.Text = "author";
+        // 
+        // L_Name
+        // 
+        this.L_Name.AutoSize = true;
+        this.L_Name.Location = new Point(6, 9);
+        this.L_Name.Name = "L_Name";
+        this.L_Name.Size = new Size(37, 15);
+        this.L_Name.TabIndex = 9;
+        this.L_Name.Text = "name";
+        // 
+        // TB_Script
+        // 
+        this.TB_Script.Location = new Point(54, 181);
+        this.TB_Script.Name = "TB_Script";
+        this.TB_Script.Size = new Size(316, 23);
+        this.TB_Script.TabIndex = 8;
+        this.TB_Script.TextChanged += this.submitChange;
+        // 
+        // CB_ValidPath
+        // 
+        this.CB_ValidPath.AutoSize = true;
+        this.CB_ValidPath.Enabled = false;
+        this.CB_ValidPath.Location = new Point(314, 382);
+        this.CB_ValidPath.Name = "CB_ValidPath";
+        this.CB_ValidPath.Size = new Size(56, 19);
+        this.CB_ValidPath.TabIndex = 7;
+        this.CB_ValidPath.Text = "Valid?";
+        this.CB_ValidPath.UseVisualStyleBackColor = true;
+        // 
         // TB_PluginRoot
         // 
         this.TB_PluginRoot.Location = new Point(6, 380);
@@ -110,6 +200,7 @@ partial class MainForm {
         this.TB_PluginRoot.ReadOnly = true;
         this.TB_PluginRoot.Size = new Size(302, 23);
         this.TB_PluginRoot.TabIndex = 6;
+        this.TB_PluginRoot.Click += this.TB_PluginRoot_Click;
         // 
         // TB_Description
         // 
@@ -119,30 +210,31 @@ partial class MainForm {
         this.TB_Description.PlaceholderText = "description";
         this.TB_Description.Size = new Size(364, 82);
         this.TB_Description.TabIndex = 5;
+        this.TB_Description.TextChanged += this.submitChange;
         // 
         // TB_Version
         // 
-        this.TB_Version.Location = new Point(6, 152);
+        this.TB_Version.Location = new Point(54, 152);
         this.TB_Version.Name = "TB_Version";
-        this.TB_Version.PlaceholderText = "version";
-        this.TB_Version.Size = new Size(364, 23);
+        this.TB_Version.Size = new Size(316, 23);
         this.TB_Version.TabIndex = 4;
+        this.TB_Version.TextChanged += this.submitChange;
         // 
         // TB_Author
         // 
-        this.TB_Author.Location = new Point(6, 123);
+        this.TB_Author.Location = new Point(54, 123);
         this.TB_Author.Name = "TB_Author";
-        this.TB_Author.PlaceholderText = "author";
-        this.TB_Author.Size = new Size(364, 23);
+        this.TB_Author.Size = new Size(316, 23);
         this.TB_Author.TabIndex = 3;
+        this.TB_Author.TextChanged += this.submitChange;
         // 
         // TB_Name
         // 
-        this.TB_Name.Location = new Point(6, 6);
+        this.TB_Name.Location = new Point(54, 6);
         this.TB_Name.Name = "TB_Name";
-        this.TB_Name.PlaceholderText = "name";
-        this.TB_Name.Size = new Size(364, 23);
+        this.TB_Name.Size = new Size(316, 23);
         this.TB_Name.TabIndex = 2;
+        this.TB_Name.TextChanged += this.submitChange;
         // 
         // TP_Types
         // 
@@ -203,14 +295,14 @@ partial class MainForm {
         this.checkedListBox1.Size = new Size(360, 184);
         this.checkedListBox1.TabIndex = 0;
         // 
-        // MSControls
+        // MS_Controls
         // 
-        this.MSControls.Items.AddRange(new ToolStripItem[] { this.TSMI_Addon, this.TSMI_Edit, this.TSMI_Tools, this.TSMI_Exit });
-        this.MSControls.Location = new Point(0, 0);
-        this.MSControls.Name = "MSControls";
-        this.MSControls.Size = new Size(384, 24);
-        this.MSControls.TabIndex = 1;
-        this.MSControls.Text = "menuStrip1";
+        this.MS_Controls.Items.AddRange(new ToolStripItem[] { this.TSMI_Addon, this.TSMI_Edit, this.TSMI_Tools, this.TSMI_Exit });
+        this.MS_Controls.Location = new Point(0, 0);
+        this.MS_Controls.Name = "MS_Controls";
+        this.MS_Controls.Size = new Size(384, 24);
+        this.MS_Controls.TabIndex = 1;
+        this.MS_Controls.Text = "menuStrip1";
         // 
         // TSMI_Addon
         // 
@@ -389,24 +481,13 @@ partial class MainForm {
         this.TSMI_Exit.Text = "Exit";
         this.TSMI_Exit.Click += this.TSMI_Exit_Click;
         // 
-        // CB_ValidPath
-        // 
-        this.CB_ValidPath.AutoSize = true;
-        this.CB_ValidPath.Enabled = false;
-        this.CB_ValidPath.Location = new Point(314, 382);
-        this.CB_ValidPath.Name = "CB_ValidPath";
-        this.CB_ValidPath.Size = new Size(56, 19);
-        this.CB_ValidPath.TabIndex = 7;
-        this.CB_ValidPath.Text = "Valid?";
-        this.CB_ValidPath.UseVisualStyleBackColor = true;
-        // 
         // MainForm
         // 
         this.AutoScaleDimensions = new SizeF(7F, 15F);
         this.AutoScaleMode = AutoScaleMode.Font;
         this.ClientSize = new Size(384, 461);
-        this.Controls.Add(this.tabControl1);
-        this.Controls.Add(this.MSControls);
+        this.Controls.Add(this.TC_Main);
+        this.Controls.Add(this.MS_Controls);
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
         this.Icon = (Icon) resources.GetObject("$this.Icon");
         this.MaximumSize = new Size(400, 500);
@@ -414,22 +495,22 @@ partial class MainForm {
         this.Name = "MainForm";
         this.Text = "MT's Godot Addon Manager";
         this.Load += this.MainForm_Load;
-        this.tabControl1.ResumeLayout(false);
+        this.TC_Main.ResumeLayout(false);
         this.TP_Config.ResumeLayout(false);
         this.TP_Config.PerformLayout();
         this.TP_Singletons.ResumeLayout(false);
-        this.MSControls.ResumeLayout(false);
-        this.MSControls.PerformLayout();
+        this.MS_Controls.ResumeLayout(false);
+        this.MS_Controls.PerformLayout();
         this.ResumeLayout(false);
         this.PerformLayout();
     }
 
     #endregion
 
-    private TabControl tabControl1;
+    private TabControl TC_Main;
     private TabPage TP_Config;
     private TabPage TP_Types;
-    private MenuStrip MSControls;
+    private MenuStrip MS_Controls;
     private ToolStripMenuItem TSMI_Addon;
     private ToolStripMenuItem TSMI_Edit;
     private ToolStripMenuItem TSMI_Tools;
@@ -469,4 +550,11 @@ partial class MainForm {
     private ToolStripMenuItem TSMI_NewType;
     private TextBox TB_PluginRoot;
     private CheckBox CB_ValidPath;
+    private TextBox TB_Script;
+    private Label L_Author;
+    private Label L_Name;
+    private Label L_Script;
+    private Label L_Version;
+    private Button B_Reload;
+    private Button B_SaveChanges;
 }
