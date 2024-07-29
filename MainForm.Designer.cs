@@ -178,8 +178,10 @@ partial class MainForm {
         // 
         this.TB_Script.Location = new Point(54, 181);
         this.TB_Script.Name = "TB_Script";
+        this.TB_Script.ReadOnly = true;
         this.TB_Script.Size = new Size(316, 23);
         this.TB_Script.TabIndex = 8;
+        this.TB_Script.Click += this.TB_Script_Click;
         this.TB_Script.TextChanged += this.submitChange;
         // 
         // CB_ValidPath

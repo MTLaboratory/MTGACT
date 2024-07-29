@@ -18,8 +18,8 @@ public partial class MainForm : Form {
             ShowPinnedPlaces = true,
             UseDescriptionForTitle = true,
         };
-        _ = fbd.ShowDialog();
-        if (fbd.SelectedPath == String.Empty)
+        DialogResult res = fbd.ShowDialog();
+        if (res == DialogResult.Cancel)
             return;
         this.TryToLoadPlugin(fbd.SelectedPath);
     }
@@ -39,7 +39,17 @@ public partial class MainForm : Form {
         TB_Script.Text = this.acf.FindValue("script");
     }
     private void CreatePlugin(String root) {
-        // TODO
+        //this.acf = new(root) {
+        //    Name = TB_Name.Text,
+        //    Description = TB_Description.Text,
+        //    Author = TB_Author.Text,
+        //    Version = TB_Version.Text,
+        //    Script = TB_Script.Text
+        //};
+        if (this.acf is not null)
+            return;
+        //String cfgData = this.acf.Compile();
+        File.WriteAllText(this.acf.FilePath, null);
     }
     private void TryToLoadPlugin(String root) {
         TB_PluginRoot.Text = root;
@@ -56,7 +66,7 @@ public partial class MainForm : Form {
     }
 
     private void MainForm_Load(object sender, EventArgs e) {
-
+        TB_Author.Text = Environment.UserName;
     }
 
     private void TSMI_Exit_Click(object sender, EventArgs e) {
@@ -67,19 +77,20 @@ public partial class MainForm : Form {
 
     private void TSMI_NewAddon_Click(object sender, EventArgs e) {
         FolderBrowserDialog fbd = new() {
-            ClientGuid = dialogGUID.create,
-            Description = "Specify a destination folder for the new Addon.",
-            RootFolder = Environment.SpecialFolder.Favorites,
+            ClientGuid = dialogGUID.load,
+            Description = "Select a folder that will contain a 'plugin.cfg' file.",
+            RootFolder = Environment.SpecialFolder.MyComputer,
             InitialDirectory = "",
             AutoUpgradeEnabled = true,
-            ShowNewFolderButton = true,
+            ShowNewFolderButton = false,
             ShowPinnedPlaces = true,
-            UseDescriptionForTitle = true
+            UseDescriptionForTitle = true,
         };
-        _ = fbd.ShowDialog();
-        if (fbd.SelectedPath == String.Empty)
+        DialogResult res = fbd.ShowDialog();
+        if (res == DialogResult.Cancel)
             return;
-        this.CreatePlugin(fbd.SelectedPath);
+        this.acf = new(fbd.SelectedPath);
+        this.acf.Create();
     }
 
     private void TSMI_Load_Click(object sender, EventArgs e) {
@@ -92,5 +103,9 @@ public partial class MainForm : Form {
 
     private void B_Reload_Click(object sender, EventArgs e) {
         this.refreshInfo();
+    }
+
+    private void TB_Script_Click(object sender, EventArgs e) {
+
     }
 }
