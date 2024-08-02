@@ -108,4 +108,8 @@ public partial class MainForm : Form {
     private void TB_Script_Click(object sender, EventArgs e) {
 
     }
+
+    private void CB_ScriptType_SelectedIndexChanged(object sender, EventArgs e) {
+
+    }
 }
