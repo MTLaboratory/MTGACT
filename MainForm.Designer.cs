@@ -43,6 +43,7 @@ partial class MainForm {
         this.TB_Name = new TextBox();
         this.TP_Scripts = new TabPage();
         this.panel1 = new Panel();
+        this.button1 = new Button();
         this.label2 = new Label();
         this.button7 = new Button();
         this.button6 = new Button();
@@ -51,11 +52,13 @@ partial class MainForm {
         this.PB_Coverage = new ProgressBar();
         this.CLB_Scripts = new CheckedListBox();
         this.CMS_Script = new ContextMenuStrip(this.components);
+        this.TSMI_NewScript = new ToolStripMenuItem();
+        this.toolStripSeparator3 = new ToolStripSeparator();
         this.TSMI_OpenScript = new ToolStripMenuItem();
+        this.TSMI_DeleteScript = new ToolStripMenuItem();
         this.toolStripSeparator2 = new ToolStripSeparator();
         this.TSMI_EnableScript = new ToolStripMenuItem();
         this.TSMI_DisableScript = new ToolStripMenuItem();
-        this.TSMI_DeleteScript = new ToolStripMenuItem();
         this.TSCB_ScriptType = new ToolStripComboBox();
         this.MS_Controls = new MenuStrip();
         this.TSMI_Addon = new ToolStripMenuItem();
@@ -82,6 +85,9 @@ partial class MainForm {
         this.TSMI_Tools = new ToolStripMenuItem();
         this.TSMI_Links = new ToolStripMenuItem();
         this.TSMI_GAL = new ToolStripMenuItem();
+        this.gitToolStripMenuItem = new ToolStripMenuItem();
+        this.toolStripTextBox1 = new ToolStripTextBox();
+        this.TSMI_RunGitCommand = new ToolStripMenuItem();
         this.TSMI_Exit = new ToolStripMenuItem();
         this.TC_Main.SuspendLayout();
         this.TP_Config.SuspendLayout();
@@ -264,6 +270,7 @@ partial class MainForm {
         // panel1
         // 
         this.panel1.BorderStyle = BorderStyle.Fixed3D;
+        this.panel1.Controls.Add(this.button1);
         this.panel1.Controls.Add(this.label2);
         this.panel1.Controls.Add(this.button7);
         this.panel1.Controls.Add(this.button6);
@@ -271,6 +278,15 @@ partial class MainForm {
         this.panel1.Name = "panel1";
         this.panel1.Size = new Size(362, 59);
         this.panel1.TabIndex = 7;
+        // 
+        // button1
+        // 
+        this.button1.Location = new Point(202, 29);
+        this.button1.Name = "button1";
+        this.button1.Size = new Size(72, 23);
+        this.button1.TabIndex = 8;
+        this.button1.Text = "button1";
+        this.button1.UseVisualStyleBackColor = true;
         // 
         // label2
         // 
@@ -294,7 +310,7 @@ partial class MainForm {
         // 
         this.button6.Location = new Point(3, 29);
         this.button6.Name = "button6";
-        this.button6.Size = new Size(271, 23);
+        this.button6.Size = new Size(129, 23);
         this.button6.TabIndex = 5;
         this.button6.Text = "button6";
         this.button6.UseVisualStyleBackColor = true;
@@ -338,16 +354,35 @@ partial class MainForm {
         // 
         // CMS_Script
         // 
-        this.CMS_Script.Items.AddRange(new ToolStripItem[] { this.TSMI_OpenScript, this.toolStripSeparator2, this.TSMI_EnableScript, this.TSMI_DisableScript, this.TSMI_DeleteScript, this.TSCB_ScriptType });
+        this.CMS_Script.Items.AddRange(new ToolStripItem[] { this.TSMI_NewScript, this.toolStripSeparator3, this.TSMI_OpenScript, this.TSMI_DeleteScript, this.toolStripSeparator2, this.TSMI_EnableScript, this.TSMI_DisableScript, this.TSCB_ScriptType });
         this.CMS_Script.Name = "contextMenuStrip1";
         this.CMS_Script.RenderMode = ToolStripRenderMode.System;
-        this.CMS_Script.Size = new Size(182, 125);
+        this.CMS_Script.Size = new Size(182, 153);
+        // 
+        // TSMI_NewScript
+        // 
+        this.TSMI_NewScript.Name = "TSMI_NewScript";
+        this.TSMI_NewScript.Size = new Size(181, 22);
+        this.TSMI_NewScript.Text = "new";
+        // 
+        // toolStripSeparator3
+        // 
+        this.toolStripSeparator3.Name = "toolStripSeparator3";
+        this.toolStripSeparator3.Size = new Size(178, 6);
         // 
         // TSMI_OpenScript
         // 
+        this.TSMI_OpenScript.Enabled = false;
         this.TSMI_OpenScript.Name = "TSMI_OpenScript";
         this.TSMI_OpenScript.Size = new Size(181, 22);
         this.TSMI_OpenScript.Text = "open";
+        // 
+        // TSMI_DeleteScript
+        // 
+        this.TSMI_DeleteScript.Enabled = false;
+        this.TSMI_DeleteScript.Name = "TSMI_DeleteScript";
+        this.TSMI_DeleteScript.Size = new Size(181, 22);
+        this.TSMI_DeleteScript.Text = "delete";
         // 
         // toolStripSeparator2
         // 
@@ -356,21 +391,17 @@ partial class MainForm {
         // 
         // TSMI_EnableScript
         // 
+        this.TSMI_EnableScript.Enabled = false;
         this.TSMI_EnableScript.Name = "TSMI_EnableScript";
         this.TSMI_EnableScript.Size = new Size(181, 22);
         this.TSMI_EnableScript.Text = "enable";
         // 
         // TSMI_DisableScript
         // 
+        this.TSMI_DisableScript.Enabled = false;
         this.TSMI_DisableScript.Name = "TSMI_DisableScript";
         this.TSMI_DisableScript.Size = new Size(181, 22);
         this.TSMI_DisableScript.Text = "disable";
-        // 
-        // TSMI_DeleteScript
-        // 
-        this.TSMI_DeleteScript.Name = "TSMI_DeleteScript";
-        this.TSMI_DeleteScript.Size = new Size(181, 22);
-        this.TSMI_DeleteScript.Text = "delete";
         // 
         // TSCB_ScriptType
         // 
@@ -390,8 +421,9 @@ partial class MainForm {
         // TSMI_Addon
         // 
         this.TSMI_Addon.DropDownItems.AddRange(new ToolStripItem[] { this.TSMI_New, this.TSS_0, this.TSMI_Save, this.TSMI_Load, this.TSS_1, this.TSMI_Package });
+        this.TSMI_Addon.Image = Properties.Resources.appbar_code_xml;
         this.TSMI_Addon.Name = "TSMI_Addon";
-        this.TSMI_Addon.Size = new Size(53, 20);
+        this.TSMI_Addon.Size = new Size(69, 20);
         this.TSMI_Addon.Text = "addon";
         // 
         // TSMI_New
@@ -403,6 +435,7 @@ partial class MainForm {
         // 
         // TSMI_NewAddon
         // 
+        this.TSMI_NewAddon.Image = Properties.Resources.appbar_fingerprint;
         this.TSMI_NewAddon.Name = "TSMI_NewAddon";
         this.TSMI_NewAddon.Size = new Size(175, 22);
         this.TSMI_NewAddon.Text = "addon";
@@ -470,32 +503,32 @@ partial class MainForm {
         // 
         this.TSMI_IncVer.DropDownItems.AddRange(new ToolStripItem[] { this.majorToolStripMenuItem, this.minorToolStripMenuItem, this.revisionToolStripMenuItem });
         this.TSMI_IncVer.Name = "TSMI_IncVer";
-        this.TSMI_IncVer.Size = new Size(173, 22);
+        this.TSMI_IncVer.Size = new Size(180, 22);
         this.TSMI_IncVer.Text = "Increment Version";
         // 
         // majorToolStripMenuItem
         // 
         this.majorToolStripMenuItem.Name = "majorToolStripMenuItem";
-        this.majorToolStripMenuItem.Size = new Size(118, 22);
+        this.majorToolStripMenuItem.Size = new Size(180, 22);
         this.majorToolStripMenuItem.Text = "Major";
         // 
         // minorToolStripMenuItem
         // 
         this.minorToolStripMenuItem.Name = "minorToolStripMenuItem";
-        this.minorToolStripMenuItem.Size = new Size(118, 22);
+        this.minorToolStripMenuItem.Size = new Size(180, 22);
         this.minorToolStripMenuItem.Text = "Minor";
         // 
         // revisionToolStripMenuItem
         // 
         this.revisionToolStripMenuItem.Name = "revisionToolStripMenuItem";
-        this.revisionToolStripMenuItem.Size = new Size(118, 22);
+        this.revisionToolStripMenuItem.Size = new Size(180, 22);
         this.revisionToolStripMenuItem.Text = "Revision";
         // 
         // TSMI_DecVer
         // 
         this.TSMI_DecVer.DropDownItems.AddRange(new ToolStripItem[] { this.majorToolStripMenuItem1, this.minorToolStripMenuItem1, this.revisionToolStripMenuItem1 });
         this.TSMI_DecVer.Name = "TSMI_DecVer";
-        this.TSMI_DecVer.Size = new Size(173, 22);
+        this.TSMI_DecVer.Size = new Size(180, 22);
         this.TSMI_DecVer.Text = "Decrement Version";
         // 
         // majorToolStripMenuItem1
@@ -519,11 +552,11 @@ partial class MainForm {
         // TSS_2
         // 
         this.TSS_2.Name = "TSS_2";
-        this.TSS_2.Size = new Size(170, 6);
+        this.TSS_2.Size = new Size(177, 6);
         // 
         // TSMI_Tools
         // 
-        this.TSMI_Tools.DropDownItems.AddRange(new ToolStripItem[] { this.TSMI_Links });
+        this.TSMI_Tools.DropDownItems.AddRange(new ToolStripItem[] { this.TSMI_Links, this.gitToolStripMenuItem });
         this.TSMI_Tools.Name = "TSMI_Tools";
         this.TSMI_Tools.Size = new Size(45, 20);
         this.TSMI_Tools.Text = "tools";
@@ -531,9 +564,10 @@ partial class MainForm {
         // TSMI_Links
         // 
         this.TSMI_Links.DropDownItems.AddRange(new ToolStripItem[] { this.TSMI_GAL });
+        this.TSMI_Links.Image = Properties.Resources.appbar_qr;
         this.TSMI_Links.Name = "TSMI_Links";
-        this.TSMI_Links.Size = new Size(101, 22);
-        this.TSMI_Links.Text = "Links";
+        this.TSMI_Links.Size = new Size(98, 22);
+        this.TSMI_Links.Text = "links";
         // 
         // TSMI_GAL
         // 
@@ -541,11 +575,34 @@ partial class MainForm {
         this.TSMI_GAL.Size = new Size(177, 22);
         this.TSMI_GAL.Text = "Godot Asset Library";
         // 
+        // gitToolStripMenuItem
+        // 
+        this.gitToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { this.toolStripTextBox1, this.TSMI_RunGitCommand });
+        this.gitToolStripMenuItem.Image = Properties.Resources.appbar_social_github_octocat;
+        this.gitToolStripMenuItem.Name = "gitToolStripMenuItem";
+        this.gitToolStripMenuItem.Size = new Size(98, 22);
+        this.gitToolStripMenuItem.Text = "git";
+        // 
+        // toolStripTextBox1
+        // 
+        this.toolStripTextBox1.Name = "toolStripTextBox1";
+        this.toolStripTextBox1.Size = new Size(100, 23);
+        this.toolStripTextBox1.Text = "status";
+        this.toolStripTextBox1.ToolTipText = "command";
+        // 
+        // TSMI_RunGitCommand
+        // 
+        this.TSMI_RunGitCommand.Image = Properties.Resources.appbar_console;
+        this.TSMI_RunGitCommand.Name = "TSMI_RunGitCommand";
+        this.TSMI_RunGitCommand.Size = new Size(160, 22);
+        this.TSMI_RunGitCommand.Text = "run";
+        // 
         // TSMI_Exit
         // 
+        this.TSMI_Exit.Image = Properties.Resources.appbar_type_null;
         this.TSMI_Exit.Name = "TSMI_Exit";
-        this.TSMI_Exit.Size = new Size(38, 20);
-        this.TSMI_Exit.Text = "Exit";
+        this.TSMI_Exit.Size = new Size(54, 20);
+        this.TSMI_Exit.Text = "exit";
         this.TSMI_Exit.Click += this.TSMI_Exit_Click;
         // 
         // MainForm
@@ -637,4 +694,10 @@ partial class MainForm {
     private ToolStripMenuItem TSMI_OpenScript;
     private ToolStripSeparator toolStripSeparator2;
     private ToolStripComboBox TSCB_ScriptType;
+    private Button button1;
+    private ToolStripMenuItem TSMI_NewScript;
+    private ToolStripSeparator toolStripSeparator3;
+    private ToolStripMenuItem gitToolStripMenuItem;
+    private ToolStripTextBox toolStripTextBox1;
+    private ToolStripMenuItem TSMI_RunGitCommand;
 }
