@@ -10,7 +10,11 @@
     <AssemblyName>MTGAM</AssemblyName>
     <RootNamespace>MTGAM</RootNamespace>
     <ApplicationIcon>MTGAM_Icon.ico</ApplicationIcon>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+	<!--
+		ver. format: major.minor.build.revision
+	-->
+	<AssemblyVersion>0.1.0.0</AssemblyVersion>
     <Version>0.1.0</Version>
     <Authors>MTadder</Authors>
     <Company>MTLaboratory</Company>
@@ -19,8 +23,15 @@
     <NeutralLanguage>en</NeutralLanguage>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSymbols>False</IncludeSymbols>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+	<Title>MTGodotAddonManager</Title>
+	<Product>MTGodotAddonManager</Product>
+	<PackageProjectUrl></PackageProjectUrl>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<RepositoryUrl>https://github.com/MTadder/MTGAM</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -60,6 +71,10 @@
       <PackagePath>\</PackagePath>
     </None>
     <None Update="MTGAM_Icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
